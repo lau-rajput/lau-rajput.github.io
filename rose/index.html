@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('rose.webp') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            flex-direction: column;
+        }
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .rose {
+            width: 100px;
+            animation: grow 3s infinite alternate;
+        }
+        @keyframes grow {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d63384;
+            margin-top: 20px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="rose2.avif" class="rose" alt="Rose">
+        <div class="message" id="message">Happy Rose Day!</div>
+        <button class="button" onclick="changeMessage()">Click for Surprise</button>
+    </div>
+    <script>
+           function changeMessage() {
+            const messages = [
+                "You are as beautiful as this rose! 🌹",
+                "I am very lucky to have a friend like you! 😊",
+                "Happy Rose Day, my dear friend! 💖",
+                "A rose for the sweetest friend ever! 🌷"
+            ];
+            const messageElement = document.getElementById("message");
+            let index = 0;
+            messageElement.innerText = messages[index];
+            setInterval(() => {
+                index = (index + 1) % messages.length;
+                messageElement.innerText = messages[index];
+            }, 3000);
+            generateLeaves();
+        }
+
+        function generateLeaves() {
+            for (let i = 0; i < 30; i++) {
+                const leaf = document.createElement("div");
+                leaf.classList.add("leaf");
+                leaf.style.left = Math.random() * 100 + "vw";
+                leaf.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                document.body.appendChild(leaf);
+                setTimeout(() => {
+                    leaf.remove();
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
