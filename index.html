@@ -51,7 +51,7 @@
     <div class="container">
         <img src="rose2.avif" class="rose" alt="Rose">
         <div class="message" id="message">Happy Rose Day!</div>
-        <button class="button" onclick="changeMessage()">Click for Surprise</button>
+       <button id="butt" class="button" onclick="changeMessage()">Click for Surprise</button>
     </div>
     <script>
            function changeMessage() {
@@ -62,6 +62,7 @@
                 "A rose for the sweetest friend ever! 🌷"
             ];
             const messageElement = document.getElementById("message");
+               document.getElementById("butt").style.display = "none";
             let index = 0;
             messageElement.innerText = messages[index];
             setInterval(() => {
